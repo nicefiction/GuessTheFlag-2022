@@ -11,6 +11,7 @@
 		C564733827FC7A2F00A11ABD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C564733727FC7A2F00A11ABD /* ContentView.swift */; };
 		C564733A27FC7A3000A11ABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C564733927FC7A3000A11ABD /* Assets.xcassets */; };
 		C564733D27FC7A3000A11ABD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C564733C27FC7A3000A11ABD /* Preview Assets.xcassets */; };
+		C564734527FC817200A11ABD /* UsingStacksToArrangeViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C564734427FC817200A11ABD /* UsingStacksToArrangeViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		C564733727FC7A2F00A11ABD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C564733927FC7A3000A11ABD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C564733C27FC7A3000A11ABD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C564734427FC817200A11ABD /* UsingStacksToArrangeViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsingStacksToArrangeViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		C564733427FC7A2F00A11ABD /* GuessTheFlag */ = {
 			isa = PBXGroup;
 			children = (
+				C564734327FC7FE800A11ABD /* Day 20 */,
 				C564733527FC7A2F00A11ABD /* GuessTheFlagApp.swift */,
 				C564733727FC7A2F00A11ABD /* ContentView.swift */,
 				C564733927FC7A3000A11ABD /* Assets.xcassets */,
@@ -65,6 +68,14 @@
 				C564733C27FC7A3000A11ABD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C564734327FC7FE800A11ABD /* Day 20 */ = {
+			isa = PBXGroup;
+			children = (
+				C564734427FC817200A11ABD /* UsingStacksToArrangeViews.swift */,
+			);
+			path = "Day 20";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C564733827FC7A2F00A11ABD /* ContentView.swift in Sources */,
+				C564734527FC817200A11ABD /* UsingStacksToArrangeViews.swift in Sources */,
 				C564733627FC7A2F00A11ABD /* GuessTheFlagApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
