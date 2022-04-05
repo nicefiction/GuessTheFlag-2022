@@ -19,22 +19,34 @@ struct ColorsAndFrames: View {
 //            Text("Hello, World!")
 //        }
 //        // .background(Color.red)
-//        // .ignoresSafeArea(edges: .top)
-//        .ignoresSafeArea()
+//        .ignoresSafeArea(edges: .top)
         
         ZStack {
             VStack(spacing: 0) {
-                Color.blue
                 Color(red: 1,
                       green: 0.8,
                       blue: 0,
                       opacity: 1)
+                Color(red: 1,
+                      green: 0.8,
+                      blue: 2,
+                      opacity: 1)
             }
             Text("Hello world")
                 .padding(50)
+            /// Changing the `foregroundColor()` modifier to `foregroundStyle()`
+            /// allows a little of the yellow and pink background colors
+            /// to come through the `.secondary` gray color.
                 .foregroundStyle(.secondary)
                 .background(.ultraThinMaterial)
         }
+        .ignoresSafeArea()
+        
+//        ZStack {
+//            Color.red
+//            Color.secondary
+//            /// The secondary color makes the red look grayish.
+//        }
     }
 }
     
