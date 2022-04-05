@@ -1,9 +1,6 @@
-//
-//  ContentView.swift
-//  GuessTheFlag
-//
-//  Created by Olivier Van hamme on 05/04/2022.
-//
+/// Source:
+/// https://www.hackingwithswift.com/100/swiftui/21
+
 
 import SwiftUI
 
