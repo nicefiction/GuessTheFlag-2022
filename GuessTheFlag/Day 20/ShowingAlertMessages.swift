@@ -7,17 +7,17 @@ import SwiftUI
 
 struct ShowingAlertMessages: View {
     
-    // MARK: - Property Wrappers
+    // MARK: - PROPERTY WRAPPERS
     
     @State private var isShowingAlert: Bool = false
     
     
     
-    // MARK: - Computed Properties
+    // MARK: - COMPUTED PROPERTIES
     
     var body: some View {
         
-        Button("Toggle Alert") {
+        Button("Show Alert") {
             isShowingAlert.toggle()
         }
         .alert("Important Alert",
@@ -35,7 +35,7 @@ struct ShowingAlertMessages: View {
 
 
 
-// MARK: - Previews
+// MARK: - PREVIEWS
 
 struct ShowingAlertMessages_Previews: PreviewProvider {
     
