@@ -14,6 +14,7 @@ struct ContentView: View {
         "Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"
     ].shuffled()
     @State private var correctAnswer: Int = Int.random(in: 0..<3)
+    @State private var gameScore: Int = 0
     
     
     
@@ -87,7 +88,7 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                Text("Score: ??")
+                Text("Score: \(gameScore)")
                     .font(.title)
                     .fontWeight(.light)
                     .foregroundColor(.indigo)
@@ -104,15 +105,8 @@ struct ContentView: View {
     func tapFlag(with number: Int)
     -> Void {
         
+        checkAnswer(with: number)
         isShowingAlert.toggle()
-        let outcome = number == correctAnswer ? "Success" : "Fail"
-        let defaultMessage = "\(outcome)\nThis is the flag of \(countryFlags[number])"
-        let customMessage = "\(outcome)\nThis is the flag of the \(countryFlags[number])"
-        
-        switch countryFlags[number] {
-        case "UK", "US": alertMessage = customMessage
-        default: alertMessage = defaultMessage
-        }
     }
     
     
@@ -122,6 +116,34 @@ struct ContentView: View {
         // isShowingAlert = false
         countryFlags.shuffle()
         correctAnswer = Int.random(in: 0..<3)
+    }
+    
+    
+    func checkAnswer(with number: Int)
+    -> Void {
+        
+        let isUKOrUS: Bool = countryFlags[number] == "UK" || countryFlags[number] == "US" ? true : false
+        let defaultMessage = "the flag of \(countryFlags[number])."
+        let customMessage = "the flag of the \(countryFlags[number])."
+        let chosenMessage = isUKOrUS ? customMessage : defaultMessage
+        
+        if number == correctAnswer {
+            gameScore += 1
+            alertMessage = "👍 +1\nThis is indeed \(chosenMessage)"
+            
+        } else {
+            gameScore -= 1
+            alertMessage = "👎 -1\nThis is \(chosenMessage)"
+        }
+        
+//        let outcome = number == correctAnswer ? "Success" : "Fail"
+//        let defaultMessage = "\(outcome)\nThis is the flag of \(countryFlags[number])"
+//        let customMessage = "\(outcome)\nThis is the flag of the \(countryFlags[number])"
+//
+//        switch countryFlags[number] {
+//        case "UK", "US": alertMessage = customMessage
+//        default: alertMessage = defaultMessage
+//        }
     }
 }
 

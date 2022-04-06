@@ -38,6 +38,8 @@ struct ColorsAndFrames: View {
             /// allows a little of the yellow and pink background colors
             /// to come through the `.secondary` gray color.
                 .foregroundStyle(.secondary)
+            /// Semantic colors are colors that are named according to their use
+            /// rather than according to their hue.
                 .background(.ultraThinMaterial)
         }
         .ignoresSafeArea()

@@ -32,6 +32,31 @@ struct Gradients: View {
                        startRadius: 20,
                        endRadius: 200)
         
+        /// PAUL:
+        /// Gradients can be created
+        /// using an array of colors
+        /// or an array of color stops:
+        RadialGradient(
+            stops: [
+                Gradient.Stop.init(color: Color(red: 0.1, green: 0.2, blue: 0.45),
+                                   location: 0.3),
+                Gradient.Stop.init(color: Color(red: 0.76, green: 0.15, blue: 0.26),
+                                   location: 0.3),
+            ],
+            center: .top,
+            startRadius: 200,
+            endRadius: 400).ignoresSafeArea()
+        
+        /// OLIVIER:
+        let gradientStops = [
+            Gradient.Stop.init(color: .red,location: 0.3),
+            Gradient.Stop.init(color: .blue, location: 0.3)
+        ]
+        RadialGradient(gradient: Gradient(stops: gradientStops),
+                       center: .top,
+                       startRadius: 200,
+                       endRadius: 400).edgesIgnoringSafeArea(.all)
+        
         
         /// The ANGULAR GRADIENT cycles colors around a circle
         /// rather than radiating outward:
