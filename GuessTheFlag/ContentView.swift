@@ -40,9 +40,11 @@ struct ContentView: View {
                            endPoint: .bottom)
             .edgesIgnoringSafeArea(.all)
             
-            VStack(spacing: 30) {
+            VStack {
+                Spacer()
+                
                 VStack {
-                    Text("Tap the flag of")
+                    Text("Guess the flag of")
                         .font(.subheadline)
                         .fontWeight(.regular)
                     Text(countryTextHeader)
@@ -51,33 +53,46 @@ struct ContentView: View {
                 }
                 .foregroundColor(.white)
                 
-//                ForEach(0..<3) { (indexNumber: Int) in
-//                    Button(action: {
-//                        print("The flag of \(countryFlags[indexNumber]) was tapped.")
-//                    }, label: {
-//                        Image(countryFlags[indexNumber])
-//                    })
-//                }
-                ForEach(0..<3) { (indexNumber: Int) in
-                    Button {
-                        print("The flag of \(countryFlags[indexNumber]) was tapped.")
-                        
-                        tapFlag(with: indexNumber)
-                    } label: {
-                        Image(countryFlags[indexNumber])
-                        /// The`renderingMode(.original)` modifier
-                        /// tells SwiftUI to render the original image pixels
-                        /// rather than trying to recolor them as a button:
-                            .renderingMode(.original)
-                            .clipShape(Capsule())
-                            .shadow(color: .indigo,
-                                    radius: 3)
+                Spacer()
+                
+                VStack(spacing: 30) {
+//                    ForEach(0..<3) { (indexNumber: Int) in
+//                        Button(action: {
+//                            print("The flag of \(countryFlags[indexNumber]) was tapped.")
+//                        }, label: {
+//                            Image(countryFlags[indexNumber])
+//                        })
+//                    }
+                    ForEach(0..<3) { (indexNumber: Int) in
+                        Button {
+                            print("The flag of \(countryFlags[indexNumber]) was tapped.")
+                            
+                            tapFlag(with: indexNumber)
+                        } label: {
+                            Image(countryFlags[indexNumber])
+                            /// The`renderingMode(.original)` modifier
+                            /// tells SwiftUI to render the original image pixels
+                            /// rather than trying to recolor them as a button:
+                                .renderingMode(.original)
+                                .clipShape(Capsule())
+                                .shadow(color: .indigo,
+                                        radius: 3)
+                        }
                     }
                 }
-            }
-            .alert(alertMessage,
-                   isPresented: $isShowingAlert) {
-                Button("OK", action: startNewRound)
+                .alert(alertMessage,
+                       isPresented: $isShowingAlert) {
+                    Button("OK", action: startNewRound)
+                }
+                
+                Spacer()
+                
+                Text("Score: ??")
+                    .font(.title)
+                    .fontWeight(.light)
+                    .foregroundColor(.indigo)
+                
+                Spacer()
             }
         }
     }
