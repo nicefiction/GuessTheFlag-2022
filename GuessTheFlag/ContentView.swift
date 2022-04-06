@@ -9,20 +9,29 @@ struct ContentView: View {
     // MARK: - PROPERTY WRAPPERS
     
     @State private var isShowingAlert: Bool = false
-    @State private var alertMessage: String = "Default message."
+    @State private var isShowingEndScore: Bool = false
+    
+    @State private var alertMessage: String = ""
     @State private var countryFlags: Array<String> = [
         "Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"
     ].shuffled()
     @State private var correctAnswer: Int = Int.random(in: 0..<3)
-    @State private var gameScore: Int = 0
+    @State private var gameScore: Int = 0 {
+        /// OLIVIER:
+        /// This makes sure the `gameScore` can never be less than `0`:
+        didSet {
+            if gameScore < 0 {
+                gameScore = 0
+            }
+        }
+    }
+    @State private var gameRound: Int = 1
+    @State private var maxGameRound: Int = 8
     
     
     
     // MARK: - PROPERTIES
-    
-    let countryName: String = ""
-    
-    
+
     
     // MARK: - COMPUTED PROPERTIES
     var countryTextHeader: String {
@@ -36,7 +45,7 @@ struct ContentView: View {
     var body: some View {
         
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [.indigo, .white]),
+            LinearGradient(gradient: Gradient(colors: [.blue, .white]),
                            startPoint: .top,
                            endPoint: .bottom)
             .edgesIgnoringSafeArea(.all)
@@ -82,16 +91,21 @@ struct ContentView: View {
                     }
                 }
                 .alert(alertMessage,
-                       isPresented: $isShowingAlert) {
+                       isPresented: gameRound < maxGameRound ? $isShowingAlert : $isShowingEndScore) {
                     Button("OK", action: startNewRound)
                 }
                 
                 Spacer()
                 
-                Text("Score: \(gameScore)")
-                    .font(.title)
-                    .fontWeight(.light)
-                    .foregroundColor(.indigo)
+                VStack {
+                    Text("Score: \(gameScore)")
+                        .font(.title)
+                        .fontWeight(.regular)
+                    Text("Round \(gameRound) of \(maxGameRound)")
+                        .font(.subheadline)
+                        .bold()
+                }
+                .foregroundColor(.indigo)
                 
                 Spacer()
             }
@@ -106,7 +120,7 @@ struct ContentView: View {
     -> Void {
         
         checkAnswer(with: number)
-        isShowingAlert.toggle()
+        gameRound == maxGameRound ? isShowingEndScore.toggle() : isShowingAlert.toggle()
     }
     
     
@@ -114,8 +128,29 @@ struct ContentView: View {
     -> Void {
         
         // isShowingAlert = false
+        increaseGameRoundCount()
         countryFlags.shuffle()
         correctAnswer = Int.random(in: 0..<3)
+    }
+    
+    
+    func increaseGameRoundCount()
+    -> Void {
+        
+        if gameRound < maxGameRound {
+            gameRound += 1
+        } else {
+            startNewGame()
+        }
+    }
+    
+    
+    func startNewGame()
+    -> Void {
+        
+        gameRound = 1
+        gameScore = 0
+        alertMessage = "Starting new game."
     }
     
     
@@ -127,23 +162,22 @@ struct ContentView: View {
         let customMessage = "the flag of the \(countryFlags[number])."
         let chosenMessage = isUKOrUS ? customMessage : defaultMessage
         
-        if number == correctAnswer {
+        if number == correctAnswer && gameRound < maxGameRound {
             gameScore += 1
-            alertMessage = "👍 +1\nThis is indeed \(chosenMessage)"
+            alertMessage = "Success! This is indeed \(chosenMessage)"
+            
+        } else if number == correctAnswer && gameRound == maxGameRound {
+            gameScore += 1
+            alertMessage = "Success! This is indeed \(chosenMessage)\nYour end score is \(gameScore) out of \(maxGameRound)."
+            
+        } else if number != correctAnswer && gameRound == maxGameRound {
+            gameScore -= 1
+            alertMessage = "Oh no... this is \(chosenMessage)\nYour end score is \(gameScore) out of \(maxGameRound)."
             
         } else {
             gameScore -= 1
-            alertMessage = "👎 -1\nThis is \(chosenMessage)"
+            alertMessage = "Oh no... this is \(chosenMessage)"
         }
-        
-//        let outcome = number == correctAnswer ? "Success" : "Fail"
-//        let defaultMessage = "\(outcome)\nThis is the flag of \(countryFlags[number])"
-//        let customMessage = "\(outcome)\nThis is the flag of the \(countryFlags[number])"
-//
-//        switch countryFlags[number] {
-//        case "UK", "US": alertMessage = customMessage
-//        default: alertMessage = defaultMessage
-//        }
     }
 }
 
