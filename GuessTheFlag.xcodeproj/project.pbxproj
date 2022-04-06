@@ -16,6 +16,7 @@
 		C564734927FC975F00A11ABD /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = C564734827FC975F00A11ABD /* Gradients.swift */; };
 		C5AE789C27FCA04500641B5F /* ButtonsAndImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AE789B27FCA04500641B5F /* ButtonsAndImages.swift */; };
 		C5AE789E27FCA6F200641B5F /* ShowingAlertMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AE789D27FCA6F200641B5F /* ShowingAlertMessages.swift */; };
+		C5AE78A127FCB3EC00641B5F /* Recap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AE78A027FCB3EC00641B5F /* Recap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		C564734827FC975F00A11ABD /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		C5AE789B27FCA04500641B5F /* ButtonsAndImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsAndImages.swift; sourceTree = "<group>"; };
 		C5AE789D27FCA6F200641B5F /* ShowingAlertMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingAlertMessages.swift; sourceTree = "<group>"; };
+		C5AE78A027FCB3EC00641B5F /* Recap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				C564734827FC975F00A11ABD /* Gradients.swift */,
 				C5AE789B27FCA04500641B5F /* ButtonsAndImages.swift */,
 				C5AE789D27FCA6F200641B5F /* ShowingAlertMessages.swift */,
+				C5AE78A027FCB3EC00641B5F /* Recap.swift */,
 			);
 			path = "Day 20";
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C564733827FC7A2F00A11ABD /* ContentView.swift in Sources */,
+				C5AE78A127FCB3EC00641B5F /* Recap.swift in Sources */,
 				C564734927FC975F00A11ABD /* Gradients.swift in Sources */,
 				C5AE789E27FCA6F200641B5F /* ShowingAlertMessages.swift in Sources */,
 				C564734527FC817200A11ABD /* UsingStacksToArrangeViews.swift in Sources */,
