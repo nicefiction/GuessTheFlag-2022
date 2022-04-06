@@ -19,20 +19,35 @@ struct ContentView: View {
     
     // MARK: - PROPERTIES
     
+    let countryName: String = ""
+    
+    
+    
     // MARK: - COMPUTED PROPERTIES
+    var countryTextHeader: String {
+        
+        let header = (countryFlags[correctAnswer] == "UK") || (countryFlags[correctAnswer] == "US") ? "The \(countryFlags[correctAnswer])" : "\(countryFlags[correctAnswer])"
+        
+        return header
+    }
+    
     
     var body: some View {
         
         ZStack {
             LinearGradient(gradient: Gradient(colors: [.indigo, .white]),
-                           startPoint: .bottom,
-                           endPoint: .top)
+                           startPoint: .top,
+                           endPoint: .bottom)
             .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 30) {
                 VStack {
                     Text("Tap the flag of")
-                    Text(countryFlags[correctAnswer])
+                        .font(.subheadline)
+                        .fontWeight(.regular)
+                    Text(countryTextHeader)
+                        .font(.largeTitle)
+                        .fontWeight(.medium)
                 }
                 .foregroundColor(.white)
                 
@@ -54,6 +69,9 @@ struct ContentView: View {
                         /// tells SwiftUI to render the original image pixels
                         /// rather than trying to recolor them as a button:
                             .renderingMode(.original)
+                            .clipShape(Capsule())
+                            .shadow(color: .indigo,
+                                    radius: 3)
                     }
                 }
             }
@@ -80,7 +98,6 @@ struct ContentView: View {
         case "UK", "US": alertMessage = customMessage
         default: alertMessage = defaultMessage
         }
-        // alertMessage = (countryFlags[number] == "UK") || (countryFlags[number] == "US") ? customMessage : defaultMessage
     }
     
     
