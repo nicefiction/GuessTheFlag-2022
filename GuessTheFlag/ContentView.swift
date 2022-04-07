@@ -31,7 +31,10 @@ struct ContentView: View {
     
     
     // MARK: - PROPERTIES
+    
+    var uiColor: Color = Color.blue
 
+    
     
     // MARK: - COMPUTED PROPERTIES
     var countryTextHeader: String {
@@ -45,7 +48,7 @@ struct ContentView: View {
     var body: some View {
         
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [.blue, .white]),
+            LinearGradient(gradient: Gradient(colors: [uiColor, .white]),
                            startPoint: .top,
                            endPoint: .bottom)
             .edgesIgnoringSafeArea(.all)
@@ -85,7 +88,7 @@ struct ContentView: View {
                             /// rather than trying to recolor them as a button:
                                 .renderingMode(.original)
                                 .clipShape(Capsule())
-                                .shadow(color: .indigo,
+                                .shadow(color: uiColor,
                                         radius: 3)
                         }
                     }
@@ -105,7 +108,7 @@ struct ContentView: View {
                         .font(.subheadline)
                         .bold()
                 }
-                .foregroundColor(.indigo)
+                .foregroundColor(uiColor)
                 
                 Spacer()
             }
