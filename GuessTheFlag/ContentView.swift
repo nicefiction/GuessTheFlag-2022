@@ -97,8 +97,7 @@ struct ContentView: View {
                 
                 VStack {
                     Text("Score: \(gameScore)")
-                        .font(.title)
-                        .fontWeight(.regular)
+                        .applyScoreHeaderStyle(using: uiColor)
                     Text("Round \(gameRound) of \(maxGameRound)")
                         .font(.subheadline)
                         .bold()
