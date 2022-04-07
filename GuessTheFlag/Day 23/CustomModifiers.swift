@@ -9,14 +9,18 @@
 
 import SwiftUI
 
+
+
 struct Watermark: ViewModifier {
     
     // MARK: - PROPERTIES
-    var text: String
+    
+    let text: String
     
     
     
     // MARK: - METHODS
+    
     func body(content: Content)
     -> some View {
         
@@ -32,6 +36,7 @@ struct Watermark: ViewModifier {
         }
     }
 }
+
 
 
 
@@ -63,10 +68,10 @@ extension View {
     }
     
     
-    func addWatermark(using text: String)
+    func addWatermark(using name: String)
     -> some View {
         
-        return modifier(Watermark(text: text))
+        return modifier(Watermark(text: name))
     }
 }
 

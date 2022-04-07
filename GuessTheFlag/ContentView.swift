@@ -82,14 +82,9 @@ struct ContentView: View {
                             
                             tapFlag(with: indexNumber)
                         } label: {
-                            Image(countryFlags[indexNumber])
-                            /// The`renderingMode(.original)` modifier
-                            /// tells SwiftUI to render the original image pixels
-                            /// rather than trying to recolor them as a button:
-                                .renderingMode(.original)
-                                .clipShape(Capsule())
-                                .shadow(color: uiColor,
-                                        radius: 3)
+                            FlagImage(flags: countryFlags,
+                                      indexNumber: indexNumber,
+                                      color: uiColor)
                         }
                     }
                 }
