@@ -12,7 +12,9 @@ struct ViewsAsProperties: View {
     // MARK: - PROPERTIES
     
     var yellow: Text = Text("Yellow")
-    var blue: some View = Text("Blue").bold().foregroundColor(.blue)
+    var indigo: some View = Text("Indigo").bold().foregroundColor(.indigo)
+    /// OLIVIER: This works as well,
+    var blue: Text = Text("Blue").bold().foregroundColor(.blue)
     
     
     
@@ -44,6 +46,7 @@ struct ViewsAsProperties: View {
     
     @ViewBuilder var orange: some View {
         /// OLIVIER: XCode warns you when using the `return` keyword.
+        // return
         Group {
             
             Text("yellow")
