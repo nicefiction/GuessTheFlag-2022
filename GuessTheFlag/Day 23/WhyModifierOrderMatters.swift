@@ -12,6 +12,16 @@ struct WhyModifierOrderMatters: View {
     var body: some View {
         
         VStack {
+            Button("hello there") {
+                print(type(of: self.body))
+            }
+            .font(.headline)
+            .padding()
+            .frame(width: 200,
+                   height: 200,
+                   alignment: .bottomLeading)
+            .background(.yellow)
+            
             Button {
                 print(type(of: self.body))
                 /// Prints:
